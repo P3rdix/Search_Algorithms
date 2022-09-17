@@ -69,7 +69,7 @@ int copycheck(struct list* a, struct node*b){
         }
         i++;
     }
-    return 1;
+    return 1;;
 }
 
 
