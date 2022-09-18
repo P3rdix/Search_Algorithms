@@ -5,6 +5,8 @@
 #include "map_generator.h"
 #include "dfs.h"
 #include "bms.h"
+#include "bfs.h"
+#include "hill_climb.h"
 
 int* get_values(int* val){
     while(*(val) <= 0){
