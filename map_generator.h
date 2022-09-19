@@ -1,10 +1,13 @@
 #ifndef MAP
 #define MAP
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "struct.h"
+
 
 void create_edge(struct node*,int,int,int);
 void xy(struct node*,int,int);
-int getint(FILE*,int*);
 
 struct node* map_generator(int no_nodes,int no_paths, int max_x, int max_y){
 
@@ -81,26 +84,23 @@ void xy(struct node* a, int x, int y){
     return;
 }
 
-int map_write(struct node* map, char file_name[], int no_nodes){
-    FILE *fptr = fopen(file_name,"w");
-    if(fptr == NULL){
-        return 0;
-    }
+void map_write(FILE* fptr,struct node* map, int no_nodes){
+    printf("\nHello");
     for(int i = 0;i<no_nodes;i++){
-        printf("u");
         fprintf(fptr,"%d=%d=%d=%d\n",(map+i)->val,(map+i)->s,(map+i)->x,(map+i)->y);
         for(int j = 0;j<(map+i)->s;j++){
-            printf("\ni");
             fprintf(fptr,"%d=",*((map+i)->node+j));
         }
         fprintf(fptr,"\n");
     }
-    fclose(fptr);
-    return 1;
+    printf("\nGoodbye");
+    return;
 }
 
-struct node* map_read(char file_name[], int no_nodes){
-    FILE *fptr = fopen(file_name,"r");
+int getint(FILE*,int*);
+
+struct node* map_read(FILE* fptr, int no_nodes){
+    printf("hello");
     if(fptr == NULL){
         return NULL;
     }
@@ -120,7 +120,9 @@ struct node* map_read(char file_name[], int no_nodes){
         i++;
         r++;
     }
-    //fclose(fptr);
+    printf("bye1");
+    fclose(fptr);
+    printf("\nbye2");
     return map;
 }
 
