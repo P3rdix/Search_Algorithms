@@ -1,13 +1,10 @@
 #ifndef MAP
 #define MAP
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "struct.h"
-
 
 void create_edge(struct node*,int,int,int);
 void xy(struct node*,int,int);
+int getint(FILE*,int*);
 
 struct node* map_generator(int no_nodes,int no_paths, int max_x, int max_y){
 
@@ -84,20 +81,23 @@ void xy(struct node* a, int x, int y){
     return;
 }
 
-void map_write(struct node* map, char file_name[], int no_nodes){
+int map_write(struct node* map, char file_name[], int no_nodes){
     FILE *fptr = fopen(file_name,"w");
+    if(fptr == NULL){
+        return 0;
+    }
     for(int i = 0;i<no_nodes;i++){
+        printf("u");
         fprintf(fptr,"%d=%d=%d=%d\n",(map+i)->val,(map+i)->s,(map+i)->x,(map+i)->y);
         for(int j = 0;j<(map+i)->s;j++){
+            printf("\ni");
             fprintf(fptr,"%d=",*((map+i)->node+j));
         }
         fprintf(fptr,"\n");
     }
     fclose(fptr);
-    return;
+    return 1;
 }
-
-int getint(FILE*,int*);
 
 struct node* map_read(char file_name[], int no_nodes){
     FILE *fptr = fopen(file_name,"r");

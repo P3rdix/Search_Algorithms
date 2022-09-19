@@ -3,10 +3,10 @@
 
 #include "struct.h"
 #include "map_generator.h"
-#include "dfs.h"
-#include "bms.h"
-#include "bfs.h"
-#include "hill_climb.h"
+#include "depth_first_search.h"
+#include "british_museum_search.h"
+#include "breadth_first_search.h"
+#include "hill_climb_search.h"
 
 int* get_values(int* val){
     while(*(val) <= 0){
@@ -52,7 +52,7 @@ void print_map(struct node* map, int size){
     for(int i = 0;i<size;i++){
         printf("\n%d\n",(map+i)->val);
         for(int j = 0;j<(map+i)->s;j++){
-            printf("\t%d",*(((map+i)->node)+j));
+            printf("\t%d (%d,%d)",*(((map+i)->node)+j),(map+*(((map+i)->node)+j))->x,(map+*(((map+i)->node)+j))->y);
         }
     }
     return;
