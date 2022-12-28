@@ -15,7 +15,7 @@ int main(void){
     print_map(map2,*val);
     int a = -1;
     int s = 1;
-    while(1){
+    while(1){//comment
         int a = which_search();
         switch(a){
             case 1: ;
